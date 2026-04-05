@@ -1,3 +1,7 @@
+<div align="center">
+  
 # LongLink
 
-Vibe coding in progress
+Work in progress
+
+</div>
