@@ -1,0 +1,194 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { Image } from 'astro:assets'
+import heroImage from '../assets/images/datacenter.png'
+import portrait from '../assets/images/lights.webp'
+import swissgpuImg from '../assets/images/swissgpu_hero.png'
+import img1 from '../assets/images/gallery_architecture_1766057054626.png'
+import img3 from '../assets/images/gallery_nature_1766057098947.png'
+import img5 from '../assets/images/gallery_street_1766057039812.png'
+
+const galleryImages = [
+	{ 
+		src: swissgpuImg, 
+		alt: 'SwissGPU', 
+		description: 'A bare metal workstation renting platform',
+		url: 'https://swissgpu.ch' 
+	},
+	{ 
+		src: img5, 
+		alt: 'SwissWWW', 
+		description: 'High-performance edge networking and web infrastructure',
+		url: '#' 
+	},
+	{ 
+		src: img1, 
+		alt: 'SwissARCH', 
+		description: 'Scalable systems architecture and technical consulting',
+		url: '#' 
+	},
+]
+---
+
+<Layout title="LongLink - Computer Science & Architecture">
+	<!-- 01 HERO -->
+	<section id="home" class="grid grid-cols-12 h-screen gap-px bg-base-content/10 overflow-hidden outline-none">
+		<!-- Main Hero Image -->
+		<div class="col-span-12 lg:col-span-8 h-[60vh] lg:h-full relative group overflow-hidden bg-base-100">
+			<!-- Subtle Brand Label -->
+			<div class="absolute bottom-6 left-6 z-10 font-tech text-xs tracking-[0.5em] opacity-50 mix-blend-difference pointer-events-none uppercase">
+				Swiss Made Software
+			</div>
+			
+			<Image 
+				src={heroImage} 
+				alt="Cinematic winter landscape of the Swiss Alps" 
+				class="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-105"
+			/>
+		</div>
+
+		<!-- Side Column 1: Info -->
+		<div class="col-span-12 lg:col-span-4 h-[40vh] lg:h-full bg-base-100 p-8 lg:p-12 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-base-content/10">
+			<div class="pt-24 lg:pt-32">
+				<h2 class="text-4xl font-swiss mb-8 leading-none uppercase">Solid &<br/>Scalable<br/>Software</h2>
+				<p class="text-sm font-light leading-relaxed text-base-content/50 max-w-xs uppercase">
+					Making life easier for users through robust architecture, kept highly accessible and affordable.
+				</p>
+			</div>
+			
+			<div class="space-y-6">
+				<a href="#contact" class="inline-block w-full border border-base-content p-4 text-center font-tech text-xs tracking-widest hover:bg-base-content hover:text-base-100 transition-all">
+					GET IN CONTACT
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- 02 PROJECTS -->
+	<section id="projects" class="border-t border-base-content/10 outline-none">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-base-content/10">
+			{galleryImages.map((image, index) => (
+				<a href={image.url || '#'} target={image.url ? '_blank' : '_self'} class="relative aspect-square group overflow-hidden bg-base-100 block">
+					<!-- Entry Metadata -->
+					<div class="absolute top-4 left-4 z-10 font-tech text-[9px] tracking-widest opacity-0 group-hover:opacity-40 transition-opacity">
+						ENTRY_{index.toString().padStart(3, '0')}
+					</div>
+					
+					<Image 
+						src={image.src} 
+						alt={image.alt} 
+						class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+					/>
+
+					<!-- HUD Hover Overlay -->
+					<div class="absolute inset-0 bg-base-content/5 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6 pointer-events-none">
+						<div class="glass-futuristic p-4 border border-white/10 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+							<h3 class="font-swiss text-sm tracking-widest mb-1 uppercase">{image.alt}</h3>
+							<p class="font-tech text-[10px] opacity-60 leading-tight">{image.description}</p>
+						</div>
+					</div>
+					
+					<!-- Grid Lines -->
+					<div class="absolute inset-0 border border-base-content/5 pointer-events-none"></div>
+				</a>
+			))}
+		</div>
+	</section>
+
+	<!-- 03 ABOUT -->
+	<section id="about" class="grid grid-cols-12 h-screen overflow-hidden border-t border-base-content/10 hide-scrollbar outline-none">
+		<!-- Bio Column -->
+		<div class="col-span-12 lg:col-span-7 p-12 lg:p-24 pt-32 lg:pt-40 border-r border-base-content/10 flex flex-col justify-between overflow-y-auto hide-scrollbar">
+			<div>
+				<span class="font-tech text-xs text-primary block mb-8">IDENTITY // PROFILE</span>
+				<h1 class="text-6xl md:text-8xl font-swiss tracking-tighter leading-[0.8] mb-12 uppercase">Decode</h1>
+				
+				<div class="prose prose-invert font-light text-base-content/70 leading-relaxed max-w-xl uppercase">
+					<p class="text-lg text-base-content mb-8">
+						"My objective is the optimization of algorithmic complexity to its skeletal structure."
+					</p>
+					<p>
+						Based in the Pacific Northwest, I operate at the intersection of systems architecture and low-level optimization. 
+						My methodology involves deep-trace analysis and the technical implementation of high-concurrency rhythms.
+					</p>
+					<p>
+						Every system is a data point in a larger study of computational alignment. 
+						Through the use of deterministic logic and minimal abstraction layers, I aim to isolate the essence of my builds.
+					</p>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Portrait Column -->
+		<div class="col-span-12 lg:col-span-5 relative group overflow-hidden bg-base-100 min-h-[50vh] lg:min-h-0">
+			<!-- Technical Markings -->
+			<div class="absolute inset-0 border border-primary/20 m-12 pointer-events-none opacity-40"></div>
+			<div class="absolute top-16 left-16 z-20 font-tech text-[9px] opacity-40">SCANNING_IDENTITY...</div>
+			
+			<Image 
+				src={portrait} 
+				alt="LongLink Admin Profile" 
+				class="absolute inset-0 w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-1000"
+			/>
+			
+			<div class="absolute bottom-12 right-12 z-20 glass-futuristic p-4 border border-white/10">
+				<div class="font-tech text-[8px] flex flex-col gap-1 uppercase">
+					<div class="flex justify-between gap-8"><span>Subj:</span><span>Longlink_Admin</span></div>
+					<div class="flex justify-between gap-8"><span>Role:</span><span>Systems_Architect</span></div>
+					<div class="flex justify-between gap-8"><span>Loc:</span><span>PNW_Node_01</span></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 04 CONTACT -->
+	<section id="contact" class="grid grid-cols-12 h-screen overflow-hidden border-t border-base-content/10 hide-scrollbar outline-none">
+		<!-- Image Column (Left) -->
+		<div class="col-span-12 lg:col-span-5 relative group overflow-hidden bg-base-100 min-h-[40vh] lg:min-h-0 border-r border-base-content/10">
+			<!-- Technical HUD -->
+			<div class="absolute inset-0 border border-primary/20 m-12 pointer-events-none opacity-40"></div>
+			<div class="absolute top-16 left-16 z-20 font-tech text-[9px] opacity-40">ESTABLISHING_UPLINK...</div>
+			
+			<Image 
+				src={img3} 
+				alt="Technical abstraction" 
+				class="absolute inset-0 w-full h-full object-cover grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-1000"
+			/>
+
+			<div class="absolute bottom-12 left-12 z-20 glass-futuristic p-6 border border-white/10 max-w-xs">
+				<p class="font-tech text-xs text-primary mb-4 uppercase">Direct_Link</p>
+				<a href="mailto:hello@longlink.systems" class="font-tech text-lg hover:text-primary transition-colors block mb-4 italic truncate">hello@longlink.systems</a>
+				<div class="font-tech text-[8px] opacity-30 space-y-1 uppercase">
+					<p>Prt: TCP/IP</p>
+					<p>Ack: Required</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Form Column (Right) -->
+		<div class="col-span-12 lg:col-span-7 p-12 lg:p-24 pt-32 lg:pt-40 overflow-y-auto hide-scrollbar flex flex-col items-end text-right">
+			<div class="mb-16 w-full max-w-xl">
+				<span class="font-tech text-xs text-primary block mb-8">DEVELOPER // UPLINK</span>
+				<h1 class="text-6xl md:text-8xl font-swiss tracking-tighter leading-[0.8] mb-8 uppercase">Connect</h1>
+				<p class="font-tech text-[10px] opacity-40 uppercase tracking-[0.2em]">Ready for data transmission.</p>
+			</div>
+
+			<form class="space-y-12 w-full max-w-xl">
+				<div class="group relative">
+					<label class="font-tech text-[9px] uppercase tracking-widest text-primary block mb-2 opacity-60 transition-opacity group-focus-within:opacity-100">NAME</label>
+					<input type="text" placeholder="NAME" class="w-full bg-transparent border-b border-base-content/10 py-4 focus:outline-none focus:border-primary font-swiss text-xl uppercase transition-colors text-right" required />
+				</div>
+
+				<div class="group relative">
+					<label class="font-tech text-[9px] uppercase tracking-widest text-primary block mb-2 opacity-60 transition-opacity group-focus-within:opacity-100">DETAILS</label>
+					<textarea placeholder="DETAILS..." class="w-full bg-transparent border-b border-base-content/10 py-4 h-32 focus:outline-none focus:border-primary font-swiss text-xl uppercase transition-colors text-right" required></textarea>
+				</div>
+
+				<button type="submit" class="w-full border border-base-content p-6 font-tech text-xs tracking-[0.5em] hover:bg-base-content hover:text-base-100 transition-all uppercase">
+					SUBMIT
+				</button>
+			</form>
+		</div>
+	</section>
+</Layout>

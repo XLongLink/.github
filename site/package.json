@@ -1,0 +1,23 @@
+{
+	"name": "website-template",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"codex": "export CODEX_HOME=\"./.codex\" && codex"
+	},
+	"dependencies": {
+		"@tailwindcss/vite": "^4.1.17",
+		"astro": "^5.16.5",
+		"tailwindcss": "^4.1.17"
+	},
+	"devDependencies": {
+		"@openai/codex": "^0.71.0",
+		"daisyui": "^5.5.13",
+		"prettier": "^3.7.4",
+		"prettier-plugin-astro": "^0.14.1"
+	}
+}

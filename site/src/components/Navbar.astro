@@ -1,0 +1,72 @@
+---
+const hasCta = Astro.slots.has('cta')
+// TODO: Explain to the AI how to use and customize this component
+---
+
+<nav class="w-full">
+	<div class="drawer z-50">
+		<input id="nav-drawer" type="checkbox" class="drawer-toggle" aria-label="Toggle navigation" />
+
+		<div class="drawer-content">
+			<div class="navbar w-screen px-6 py-4 flex justify-between">
+				<!-- Start -->
+				<div class="flex-none">
+					<a href="/" class="transition-opacity hover:opacity-70">
+						<slot name="logo" />
+					</a>
+				</div>
+
+				<!-- End -->
+				<div class="flex-none gap-8">
+					<div class="hidden lg:flex">
+						<ul class="menu menu-horizontal gap-12 font-tech text-[10px] p-0">
+							<slot name="links" />
+						</ul>
+					</div>
+
+					<label for="nav-drawer" class="btn btn-ghost btn-sm lg:hidden" aria-label="Open navigation menu">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-5 w-5"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="1"
+								d="M4 8h16M4 16h16"></path>
+						</svg>
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<!-- Mobile drawer -->
+		<div class="drawer-side drawer-end">
+			<label for="nav-drawer" class="drawer-overlay" aria-label="Close navigation menu"></label>
+
+			<ul class="menu p-8 w-full min-h-full bg-base-100/95 backdrop-blur-xl gap-6 font-tech text-sm uppercase">
+				<li class="mb-12">
+					<a href="/" class="p-0">
+						<slot name="logo" />
+					</a>
+				</li>
+
+				<slot name="links" />
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<script>
+	const navLinks = document.querySelectorAll('a[href^="#"]');
+	const navDrawer = document.getElementById('nav-drawer') as HTMLInputElement;
+
+	navLinks.forEach(link => {
+		link.addEventListener('click', () => {
+			if (navDrawer) navDrawer.checked = false;
+		});
+	});
+</script>

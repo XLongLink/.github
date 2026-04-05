@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@300;400&display=swap');
+
+@import 'tailwindcss';
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+	name: 'swissfuturistic';
+	default: true;
+	prefersdark: true;
+	color-scheme: dark;
+
+	--color-base-100: oklch(10% 0 0);
+	--color-base-200: oklch(15% 0 0);
+	--color-base-300: oklch(20% 0 0);
+	--color-base-content: oklch(95% 0 0);
+	--color-primary: oklch(70% 0.1 20);
+	--color-primary-content: oklch(10% 0 0);
+	--color-secondary: oklch(40% 0.25 240);
+	--color-secondary-content: oklch(98% 0 0);
+	--color-accent: oklch(50% 0.3 330);
+	--color-accent-content: oklch(98% 0 0);
+
+	--radius-selector: 0rem;
+	--radius-field: 0rem;
+	--radius-box: 0rem;
+
+	--border: 1px;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+:root {
+	--font-sans: 'Inter', sans-serif;
+	--font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+	font-family: var(--font-sans);
+	background-color: var(--color-base-100);
+	color: var(--color-base-content);
+	overflow-x: hidden;
+}
+
+.font-swiss {
+	font-weight: 900;
+	letter-spacing: -0.05em;
+	text-transform: uppercase;
+}
+
+.font-tech {
+	font-family: var(--font-mono);
+	font-weight: 300;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+/* Glassmorphism utility */
+.glass-futuristic {
+	background: rgba(255, 255, 255, 0.03);
+	backdrop-filter: blur(12px);
+	border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Noise overlay */
+.noise-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	pointer-events: none;
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+	opacity: 0.03;
+	z-index: 9999;
+}
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.hide-scrollbar {
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: none;
+	/* Firefox */
+}

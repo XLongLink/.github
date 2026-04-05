@@ -1,0 +1,43 @@
+---
+import '../assets/app.css'
+import { Image } from 'astro:assets'
+import logo from '../assets/logo.png'
+import Navbar from '../components/Navbar.astro'
+import Footer from '../components/Footer.astro'
+
+interface Props {
+	title?: string
+}
+
+const { title = 'LongLink - Computer Science & Systems Architecture' } = Astro.props
+---
+
+<!doctype html>
+<html lang="en" data-theme="cupcake">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="selection:bg-primary selection:text-primary-content">
+		<div class="noise-overlay"></div>
+		
+		<header class="fixed top-0 left-0 w-full z-50 mix-blend-difference">
+			<Navbar>
+				<span slot="logo" class="text-xl font-swiss tracking-tighter">LongLink</span>
+				<li slot="links"><a href="#home" class="hover:text-primary transition-colors py-1">01 INDEX</a></li>
+				<li slot="links"><a href="#projects" class="hover:text-primary transition-colors py-1">02 PROJECTS</a></li>
+				<li slot="links"><a href="#about" class="hover:text-primary transition-colors py-1">03 ABOUT</a></li>
+				<li slot="links"><a href="#contact" class="hover:text-primary transition-colors py-1">04 CONTACT</a></li>
+			</Navbar>
+		</header>
+
+		<main class="min-h-screen">
+			<slot />
+		</main>
+
+		<Footer />
+	</body>
+</html>
